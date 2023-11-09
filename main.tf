@@ -7,12 +7,12 @@ terraform {
   }
 }
 
-import {
-  id = "supersecret"
-  to = random_password.password
-}
-
-resource "random_password" "password" {
+resource "random_password" "new_password" {
   length = 11
   lower  = false
+}
+
+moved {
+  from = random_password.password
+  to = random_password.new_password
 }
